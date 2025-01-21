@@ -1,0 +1,42 @@
+class RegionStatistics:
+    def __init__(self6, region):
+    
+        self6.region = region
+
+    def count_region(self6):
+        """
+        Zählt die Anzahl der Werte in der Liste 'region'.
+
+        :return: Anzahl der Datensätze in der Region.
+        """
+        return len(self6.region)
+
+    def count_region_frequency(self6):
+        """
+        Zählt, wie oft jede Region in der Liste 'region' vorkommt.
+
+        :return: Ein Dictionary mit der Häufigkeit jeder Region.
+        """
+        region_count = {}
+        for r in self6.region:
+            if r in region_count:
+                region_count[r] += 1
+            else:
+                region_count[r] = 1
+        return region_count
+
+
+# Beispielaufruf
+
+
+
+# Eine Instanz der Klasse erstellen
+region_stats = RegionStatistics(region)
+
+# Berechnungen durchführen
+count_region = region_stats.count_region()  # Zählt die Anzahl der 'region' Datensätze
+region_frequency = region_stats.count_region_frequency()  # Häufigkeit jeder Region
+
+# Ergebnisse ausgeben
+print(f"Anzahl der 'region' Datensätze: {count_region}")
+print("Häufigkeit der Regionen:", region_frequency)
