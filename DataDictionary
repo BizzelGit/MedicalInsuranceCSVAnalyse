@@ -1,0 +1,52 @@
+import csv
+import statistics
+
+def import_csv_to_variables(file_path):
+    """
+    Liest eine CSV-Datei ein und speichert die Daten jeder Spalte in einer separaten Liste.
+    
+    :param file_path: Der Pfad zur CSV-Datei.
+    :return: Ein Dictionary mit Listen für jede Spalte.
+    """
+    try:
+        with open(file_path, mode='r', encoding='utf-8') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            
+            # Leere Listen für jede Spalte erstellen
+            age = []
+            sex = []
+            bmi = []
+            children = []
+            smoker = []
+            region = []
+            charges = []
+            
+            # Daten Zeile für Zeile hinzufügen
+            for row in csv_reader:
+                sex.append(row['sex'])
+                age.append(float(row['age']))  # Alterswerte in Integer konvertieren
+                bmi.append(float(row['bmi'])) 
+                children.append(int(row['children']))
+                smoker.append(row['smoker'])
+                region.append(row['region'])
+                charges.append(float(row['charges'])) 
+                
+            # Rückgabe der Variablen als Dictionary
+            return {
+                'age': age,
+                'sex': sex,
+                'bmi': bmi,
+                'children': children,
+                'smoker': smoker,
+                'region': region,
+                'charges': charges
+            }
+    except FileNotFoundError:
+        print(f"Die Datei '{file_path}' wurde nicht gefunden.")
+        return None
+    except KeyError as e:
+        print(f"Spalte nicht gefunden: {e}")
+        return None
+    except Exception as e:
+        print(f"Ein Fehler ist aufgetreten: {e}")
+        return None
