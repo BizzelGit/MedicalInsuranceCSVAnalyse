@@ -1,0 +1,71 @@
+import statistics
+
+class AgeStatistics:
+    def __init__(self, age):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self.age = age
+
+    def calculate_average(self):
+        """
+        Berechnet den Durchschnittswert der Alterswerte.
+
+        :return: Durchschnittsalter.
+        """
+        return statistics.mean(self.age)
+
+    def calculate_max(self):
+        """
+        Berechnet den maximalen Wert der Alterswerte.
+
+        :return: Maximalwert des Alters.
+        """
+        return max(self.age)
+
+    def calculate_min(self):
+        """
+        Berechnet den minimalen Wert der Alterswerte.
+
+        :return: Minimalwert des Alters.
+        """
+        return min(self.age)
+    
+    def count_records(self):
+        """
+        Zählt die Anzahl der Alterswerte in der Liste.
+
+        :return: Anzahl der Alterswerte.
+        """
+        return len(self.age)
+
+    def calculate_mode(self):
+        """
+        Berechnet den häufigsten Alterswert (Modus).
+
+        :return: Der häufigste Alterswert.
+        """
+        try:
+            return statistics.mode(self.age)
+        except statistics.StatisticsError:
+            # Falls es mehrere Moduswerte gibt
+            return "Mehrere Moduswerte vorhanden"
+
+# Eine Instanz der Klasse erstellen
+age_stats = AgeStatistics(age)
+
+# Berechnungen durchführen
+average_age = age_stats.calculate_average()
+max_age = age_stats.calculate_max()
+min_age = age_stats.calculate_min()
+mode_age = age_stats.calculate_mode()
+count_age = age_stats.count_records() 
+
+# Ergebnisse ausgeben
+print(f"Durchschnittsalter: {average_age}")
+print(f"Maximalalter: {max_age}")
+print(f"Minimalalter: {min_age}")
+print(f"Häufigster Alterswert: {mode_age}")
+print(f"Anzahl der Alterswerte: {count_age}") 
