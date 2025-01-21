@@ -1,0 +1,29 @@
+import statistics
+
+class SmokerStatistics:
+    def __init__(self5, smoker):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self5.smoker = smoker
+
+    def count_smoker(self5):
+        """
+        Zählt die Anzahl der Vorkommen von 'male' und 'female' in der Liste 'sex'.
+
+        :return: Ein Dictionary mit der Anzahl der Vorkommen von 'male' und 'female'.
+        """
+        yes_count = self5.smoker.count('yes')
+        no_count = self5.smoker.count('no')
+        return {'yes': yes_count, 'no': no_count}
+    
+# Eine Instanz der Klasse erstellen
+smoker_stats = SmokerStatistics(smoker)
+
+# Berechnungen durchführen
+count_smoker = smoker_stats.count_smoker()  # Zählt die Anzahl der 'male' und 'female'
+
+# Ergebnisse ausgeben
+print(f"Anzahl Raucher und Nichtraucher: {count_smoker}")
