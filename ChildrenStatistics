@@ -1,0 +1,61 @@
+import statistics
+
+class ChildrenStatistics:
+    def __init__(self2, children):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self2.children = children
+
+    def calculate_average(self2):
+        """
+        Berechnet den Durchschnittswert der Alterswerte.
+
+        :return: Durchschnittsalter.
+        """
+        return statistics.mean(self2.children)
+
+    def calculate_max(self2):
+        """
+        Berechnet den maximalen Wert der Alterswerte.
+
+        :return: Maximalwert des Alters.
+        """
+        return max(self2.children)
+
+    def calculate_min(self2):
+        """
+        Berechnet den minimalen Wert der Alterswerte.
+
+        :return: Minimalwert des Alters.
+        """
+        return min(self2.children)
+
+    def calculate_mode(self2):
+        """
+        Berechnet den häufigsten Alterswert (Modus).
+
+        :return: Der häufigste Alterswert.
+        """
+        try:
+            return statistics.mode(self2.children)
+        except statistics.StatisticsError:
+            # Falls es mehrere Moduswerte gibt
+            return "Mehrere Moduswerte vorhanden"
+
+# Eine Instanz der Klasse erstellen
+children_stats = ChildrenStatistics(children)
+
+# Berechnungen durchführen
+average_children = children_stats.calculate_average()
+max_children = children_stats.calculate_max()
+min_children = children_stats.calculate_min()
+mode_children = children_stats.calculate_mode()
+
+# Ergebnisse ausgeben
+print(f"Durchschnitts children: {average_children}")
+print(f"Maximal children: {max_children}")
+print(f"Minimal children: {min_children}")
+print(f"Häufigster childrenwert: {mode_children}")
