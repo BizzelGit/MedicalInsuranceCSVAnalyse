@@ -1,0 +1,29 @@
+import statistics
+
+class SexStatistics:
+    def __init__(self4, sex):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self4.sex = sex
+
+    def count_sex(self4):
+        """
+        Zählt die Anzahl der Vorkommen von 'male' und 'female' in der Liste 'sex'.
+
+        :return: Ein Dictionary mit der Anzahl der Vorkommen von 'male' und 'female'.
+        """
+        male_count = self4.sex.count('male')
+        female_count = self4.sex.count('female')
+        return {'male': male_count, 'female': female_count}
+    
+# Eine Instanz der Klasse erstellen
+sex_stats = SexStatistics(sex)
+
+# Berechnungen durchführen
+count_sex = sex_stats.count_sex()  # Zählt die Anzahl der 'male' und 'female'
+
+# Ergebnisse ausgeben
+print(f"Anzahl sex: {count_sex}")
