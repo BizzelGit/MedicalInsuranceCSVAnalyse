@@ -1,0 +1,26 @@
+import csv
+
+def import_csv(file_path):
+    """
+    Liest eine CSV-Datei ein und gibt die Inhalte aus.
+    
+    :param file_path: Der Pfad zur CSV-Datei.
+    """
+    try:
+        with open(file_path, mode='r', encoding='utf-8') as csv_file:
+            csv_reader = csv.reader(csv_file)
+            # Kopfzeile (Header) lesen
+            header = next(csv_reader)
+            print(f"Header: {header}")
+            
+            # Zeilen auslesen und anzeigen
+            for row in csv_reader:
+                print(row)
+    except FileNotFoundError:
+        print(f"Die Datei '{file_path}' wurde nicht gefunden.")
+    except Exception as e:
+        print(f"Ein Fehler ist aufgetreten: {e}")
+
+# Beispielaufruf
+file_path = '/Users/kaar/Desktop/insurance.csv'  # Pfad zur CSV-Datei
+import_csv(file_path)
