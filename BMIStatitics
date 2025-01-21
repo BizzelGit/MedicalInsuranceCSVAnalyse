@@ -1,0 +1,61 @@
+import statistics
+
+class BmiStatistics:
+    def __init__(self1, bmi):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self1.bmi = bmi
+
+    def calculate_average(self1):
+        """
+        Berechnet den Durchschnittswert der Alterswerte.
+
+        :return: Durchschnittsalter.
+        """
+        return statistics.mean(self1.bmi)
+
+    def calculate_max(self1):
+        """
+        Berechnet den maximalen Wert der Alterswerte.
+
+        :return: Maximalwert des Alters.
+        """
+        return max(self1.bmi)
+
+    def calculate_min(self1):
+        """
+        Berechnet den minimalen Wert der Alterswerte.
+
+        :return: Minimalwert des Alters.
+        """
+        return min(self1.bmi)
+
+    def calculate_mode(self1):
+        """
+        Berechnet den häufigsten Alterswert (Modus).
+
+        :return: Der häufigste Alterswert.
+        """
+        try:
+            return statistics.mode(self1.bmi)
+        except statistics.StatisticsError:
+            # Falls es mehrere Moduswerte gibt
+            return "Mehrere Moduswerte vorhanden"
+
+# Eine Instanz der Klasse erstellen
+bmi_stats = BmiStatistics(bmi)
+
+# Berechnungen durchführen
+average_bmi = bmi_stats.calculate_average()
+max_bmi = bmi_stats.calculate_max()
+min_bmi = bmi_stats.calculate_min()
+mode_bmi = bmi_stats.calculate_mode()
+
+# Ergebnisse ausgeben
+print(f"Durchschnittsbmi: {average_bmi}")
+print(f"Maximalbmi: {max_bmi}")
+print(f"Minimalbmi: {min_bmi}")
+print(f"Häufigster Bmiwert: {mode_bmi}")
