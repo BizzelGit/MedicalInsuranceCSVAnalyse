@@ -1,0 +1,61 @@
+import statistics
+
+class ChargesStatistics:
+    def __init__(self3, charges):
+        """
+        Initialisiert die Klasse mit einer Liste von Alterswerten.
+
+        :param age: Liste der Alterswerte.
+        """
+        self3.charges = charges
+
+    def calculate_average(self3):
+        """
+        Berechnet den Durchschnittswert der Alterswerte.
+
+        :return: Durchschnittsalter.
+        """
+        return statistics.mean(self3.charges)
+
+    def calculate_max(self3):
+        """
+        Berechnet den maximalen Wert der Alterswerte.
+
+        :return: Maximalwert des Alters.
+        """
+        return max(self3.charges)
+
+    def calculate_min(self3):
+        """
+        Berechnet den minimalen Wert der Alterswerte.
+
+        :return: Minimalwert des Alters.
+        """
+        return min(self3.charges)
+
+    def calculate_mode(self3):
+        """
+        Berechnet den häufigsten Alterswert (Modus).
+
+        :return: Der häufigste Alterswert.
+        """
+        try:
+            return statistics.mode(self3.charges)
+        except statistics.StatisticsError:
+            # Falls es mehrere Moduswerte gibt
+            return "Mehrere Moduswerte vorhanden"
+
+# Eine Instanz der Klasse erstellen
+charges_stats = ChargesStatistics(charges)
+
+# Berechnungen durchführen
+average_charges = charges_stats.calculate_average()
+max_charges = charges_stats.calculate_max()
+min_charges = charges_stats.calculate_min()
+mode_charges = charges_stats.calculate_mode()
+
+# Ergebnisse ausgeben
+print(f"Durchschnitts charges: {average_charges}")
+print(f"Maximal charges: {max_charges}")
+print(f"Minimal charges: {min_charges}")
+print(f"Häufigster chargeswert: {mode_charges}")
