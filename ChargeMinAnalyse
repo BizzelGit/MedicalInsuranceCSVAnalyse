@@ -1,0 +1,77 @@
+class ChargeDetailStatisticsMin:
+    def __init__(self, age, sex, bmi, children, smoker, region, charges):
+        """
+        Initialisiert die Klasse mit Listen von Alterswerten, Geschlechtern, BMI, Kindern,
+        Raucherstatus, Regionen und Charges.
+        
+        :param age: Liste der Alterswerte.
+        :param sex: Liste der Geschlechter ("male", "female").
+        :param bmi: Liste der BMI-Werte.
+        :param children: Liste der Anzahl der Kinder.
+        :param smoker: Liste des Raucherstatus.
+        :param region: Liste der Regionen.
+        :param charges: Liste der Charge-Werte.
+        """
+        self.age = age
+        self.sex = sex
+        self.bmi = bmi
+        self.children = children
+        self.smoker = smoker
+        self.region = region
+        self.charges = charges
+
+    def calculate_min_chargedetail(self):
+        """
+        Berechnet den minimalen Wert der Charges und gibt alle Datensätze zurück,
+        die diesen minimalen Wert haben.
+
+        :return: Ein Dictionary mit allen Datensätzen, die den minimalen 'charges' Wert haben.
+        """
+        min_chargedetail = min(self.charges)  # Minimalwert der Charges ermitteln
+        min_chargedetail_indices = [index for index, value in enumerate(self.charges) if value == min_chargedetail]
+
+        # Überprüfen, ob es Indizes gibt
+        if not min_chargedetail_indices:
+            print("Keine Datensätze mit dem minimalen Charge-Wert gefunden.")
+            return None, []
+
+        # Alle Datensätze mit dem minimalen 'charges' Wert
+        min_chargechargedetail_records = []
+        for index in min_chargedetail_indices:
+            # Sicherstellen, dass der Index gültig ist
+            if index < len(self.age):
+                record = {
+                    'age': self.age[index],
+                    'sex': self.sex[index],
+                    'bmi': self.bmi[index],
+                    'children': self.children[index],
+                    'smoker': self.smoker[index],
+                    'region': self.region[index],
+                    'charges': self.charges[index]
+                }
+                min_chargechargedetail_records.append(record)
+
+        return min_chargedetail, min_chargechargedetail_records
+
+
+# Beispielwerte (diese Werte sollten deine echten Daten ersetzen)
+age = [25.5, 30.0, 22.0, 27.5, 30.0, 35.0, 30.0]
+sex = ['female', 'male', 'female', 'male', 'female', 'male', 'female']
+bmi = [22.5, 30.0, 26.5, 28.0, 32.0, 24.0, 25.0]
+children = [0, 1, 2, 0, 3, 2, 1]
+smoker = ['no', 'yes', 'no', 'no', 'yes', 'yes', 'no']
+region = ['north', 'south', 'north', 'east', 'west', 'south', 'north']
+charges = [12000, 22000, 13000, 18000, 22000, 24000, 22000]
+
+# Eine Instanz der Klasse erstellen
+chargedetail_stats = ChargeDetailStatisticsMin(age, sex, bmi, children, smoker, region, charges)
+
+# Berechnungen durchführen
+min_chargedetail, min_chargedetail_records = chargedetail_stats.calculate_min_chargedetail()
+
+# Ergebnisse ausgeben
+if min_chargedetail is not None:
+    print(f"Minimaler Charge-Wert: {min_chargedetail}")
+    print("Datensätze mit minimalem Charge-Wert:")
+    for record in min_chargedetail_records:
+        print(record)
